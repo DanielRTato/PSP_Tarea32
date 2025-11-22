@@ -1,15 +1,22 @@
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.Scanner;
 
 public class Servidor {
     public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
         int puerto = 6666;
         String[] respuestas = {
                 "Mensaje 1: Pierde",
                 "Mensaje 2: La",
                 "Mensaje 3: Cabeza"
         };
+
+        while  (true) {
+
+        }
 
         try {
             DatagramSocket datagramSocket = new DatagramSocket(puerto);

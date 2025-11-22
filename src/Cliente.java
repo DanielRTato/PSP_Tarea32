@@ -13,6 +13,10 @@ public class Cliente {
                 "mensaje3: Homer"
         };
 
+        while (true) {
+
+        }
+
         try {
             InetAddress direccionServidor = InetAddress.getByName("localhost");
             DatagramSocket datagramSocket = new DatagramSocket();
