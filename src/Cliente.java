@@ -1,27 +1,26 @@
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
+import java.util.Scanner;
 
 public class Cliente {
     public static void main(String[] args) {
 
-
-        int puertoServidor = 6666;
-        String[] mensajes = {
-                "mensaje1: sin tv:",
-                "mensaje2: y sin cerveza",
-                "mensaje3: Homer"
-        };
-
-        while (true) {
-
-        }
+        Scanner scanner = new Scanner(System.in);
+        final int puertoServidor = 6666;
 
         try {
             InetAddress direccionServidor = InetAddress.getByName("localhost");
             DatagramSocket datagramSocket = new DatagramSocket();
 
-            for (String mensaje : mensajes) {
+            while (true) {
+                System.out.println("Escribe un mensaje para el servidor (o 'salir' para terminar): ");
+                String mensaje = scanner.nextLine();
+
+                if (mensaje.equalsIgnoreCase("salir")) {
+                    break;
+                }
+
                 // Enviar mensaje al servidor
                 byte[] buffer = mensaje.getBytes();
                 DatagramPacket paquete = new DatagramPacket(buffer, buffer.length, direccionServidor, puertoServidor);
@@ -33,13 +32,13 @@ public class Cliente {
                 DatagramPacket respuesta = new DatagramPacket(bufferRespuesta, bufferRespuesta.length);
                 datagramSocket.receive(respuesta);
                 String mensajeServidor = new String(respuesta.getData(), 0, respuesta.getLength());
-                System.out.println("Respuesta del servidor: " + mensajeServidor);
+                System.out.println("Mensaje del servidor: " + mensajeServidor);
             }
-
             datagramSocket.close();
 
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
+
 }
