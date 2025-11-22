@@ -21,9 +21,16 @@ public class ServidorUDP {
                 String mensajeCliente = new String(peticion.getData(), 0, peticion.getLength());
                 System.out.println("Recibido del cliente: " + mensajeCliente);
 
+                String[] listaPalabras = mensajeCliente.split(" ");
+                String palabraLarga = "";
+
+                for (String palabra : listaPalabras) {
+                    if (palabraLarga.length() < palabra.length())
+                        palabraLarga = palabra;
+                }
+
                 // Parte de enviar respuestas al cliente
-                System.out.print("Escribe aquí tu mensaje para el cliente: ");
-                String respuesta = scanner.nextLine();
+                String respuesta = "Palabra más larga: " + palabraLarga + " (longitud: " + palabraLarga.length() + ")";
                 byte[] bufferSalida = respuesta.getBytes();
                 InetAddress direccionCliente = peticion.getAddress();
                 int puertoCliente = peticion.getPort();

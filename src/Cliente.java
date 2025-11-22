@@ -14,7 +14,7 @@ public class Cliente {
             DatagramSocket datagramSocket = new DatagramSocket();
 
             while (true) {
-                System.out.println("Escribe un mensaje para el servidor (o 'salir' para terminar): ");
+                System.out.println("Escribe la lista de palabras: (o 'salir' para terminar): ");
                 String mensaje = scanner.nextLine();
 
                 if (mensaje.equalsIgnoreCase("salir")) {
