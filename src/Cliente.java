@@ -9,9 +9,8 @@ public class Cliente {
         Scanner scanner = new Scanner(System.in);
         final int puertoServidor = 6666;
 
-        try {
+        try (DatagramSocket datagramSocket = new DatagramSocket()) {
             InetAddress direccionServidor = InetAddress.getByName("localhost");
-            DatagramSocket datagramSocket = new DatagramSocket();
 
             while (true) {
                 System.out.println("Escribe la lista de palabras: (o 'salir' para terminar): ");
